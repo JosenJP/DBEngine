@@ -20,13 +20,13 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{384720EC-7AE1-462B-95B6-A49963FB2B9E}</ProjectGuid>
-    <RootNamespace>DBEngine</RootNamespace>
+    <ProjectGuid>{2E9E7601-004D-49A1-B002-9891063058BD}</ProjectGuid>
+    <RootNamespace>DBEngineTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -39,7 +39,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -69,34 +69,25 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(MSBuildProjectDirectory)\Include;$(MSBuildProjectDirectory)\3rdParty;$(MSBuildProjectDirectory)\3rdParty\MySqlConnector\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(MSBuildProjectDirectory)\3rdParty\MySqlConnector\lib;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(MSBuildProjectDirectory)\3rdParty\MySqlConnector\include;$(MSBuildProjectDirectory)\Include;$(MSBuildProjectDirectory)\3rdParty;$(IncludePath)</IncludePath>
-    <LibraryPath>$(MSBuildProjectDirectory)\3rdParty\MySqlConnector\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(MSBuildProjectDirectory)\..\DBEngine\Include;$(MSBuildProjectDirectory)\..\DBEngine;$(MSBuildProjectDirectory)\..\DBEngine\3rdParty;$(MSBuildProjectDirectory)\..\DBEngine\3rdParty\MySqlConnector\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(MSBuildProjectDirectory)\..\x64\Debug;$(MSBuildProjectDirectory)\..\DBEngine\3rdParty\MySqlConnector\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>DBENGINE_PROJECT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>mysqlcppconn8.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>DBENGINE_PROJECT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>mysqlcppconn-static.lib;mysqlcppconn.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mysqlcppconn.lib;DBEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <FullProgramDatabaseFile>true</FullProgramDatabaseFile>
     </Link>
   </ItemDefinitionGroup>
@@ -127,30 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="ConverterBase.hpp" />
-    <ClInclude Include="ConverterFactory.hpp" />
-    <ClInclude Include="CVT_Issues.hpp" />
-    <ClInclude Include="DBEngine.hpp" />
-    <ClInclude Include="DBEngineFactory.hpp" />
-    <ClInclude Include="DB_Issues.hpp" />
-    <ClInclude Include="EngineBase.hpp" />
-    <ClInclude Include="EngineMySql.hpp" />
-    <ClInclude Include="EngineSqlServer.hpp" />
-    <ClInclude Include="DBInfo.hpp" />
-    <ClInclude Include="Healthy.hpp" />
-    <ClInclude Include="TableNames.hpp" />
-    <ClInclude Include="TBL_Issues.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="ConverterFactory.cpp" />
-    <ClCompile Include="CVT_Issues.cpp" />
-    <ClCompile Include="DBEngine.cpp" />
-    <ClCompile Include="DBEngineFactory.cpp" />
-    <ClCompile Include="DB_Issues.cpp" />
-    <ClCompile Include="EngineBase.cpp" />
-    <ClCompile Include="EngineMySql.cpp" />
-    <ClCompile Include="EngineSqlServer.cpp" />
-    <ClCompile Include="TableNames.cpp" />
+    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
